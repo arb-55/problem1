@@ -4,7 +4,7 @@ public class CyclicSubstringMaxSum {
 
     public static int maxCyclicSubstringSum(String S) {
         int n = S.length();
-        String S2 = S + S;  // simulate cyclic
+        String S2 = S + S;  
 
         Set<Character> set = new HashSet<>();
         int left = 0;
@@ -15,7 +15,7 @@ public class CyclicSubstringMaxSum {
             char ch = S2.charAt(right);
             int val = ch - 'a' + 1;
 
-            // Remove duplicates
+           
             while (set.contains(ch)) {
                 char leftChar = S2.charAt(left);
                 set.remove(leftChar);
@@ -23,11 +23,11 @@ public class CyclicSubstringMaxSum {
                 left++;
             }
 
-            // Add current character
+            
             set.add(ch);
             currentSum += val;
 
-            // Ensure window size <= original length
+          
             if (right - left + 1 > n) {
                 char leftChar = S2.charAt(left);
                 set.remove(leftChar);
